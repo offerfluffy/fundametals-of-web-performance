@@ -32,9 +32,6 @@
       rel="stylesheet"
     />
 
-    <link rel="preload" as="image" href="/assets/img/webp/hero-mobile.webp" />
-    <link rel="preload" as="image" href="/assets/img/webp/hero-desktop.webp" />
-
     <link rel="stylesheet" href="/assets/css/styles.bundle.css" />
     <script>
       const API_BASE_URL = `${location.protocol}//${location.host}`;
@@ -74,20 +71,32 @@
       </section>
 
       <section class="hero">
-        <div class="illustration">
-          <img
-            class="desktop"
-            src="/assets/img/webp/hero-desktop.webp"
-            alt="Developer Stickers"
-            fetchpriority="high"
+        <picture class="illustration">
+          <source
+            media="(max-width: 720px)"
+            srcset="
+              /assets/img/webp/hero-mobile-360.webp   360w,
+              /assets/img/webp/hero-mobile-720.webp   720w,
+              /assets/img/webp/hero-mobile-1400.webp 1400w
+            "
+          />
+          <source
+            media="(min-width: 721px)"
+            srcset="
+              /assets/img/webp/hero-desktop-720.webp   720w,
+              /assets/img/webp/hero-desktop-1400.webp 1400w,
+              /assets/img/webp/hero-desktop-2800.webp 2800w
+            "
           />
           <img
-            class="mobile"
-            src="/assets/img/webp/hero-mobile.webp"
-            alt="Developer Stickers"
+            src="/assets/img/webp/hero-desktop-2800.webp"
+            alt="Developer Stickers Online"
             fetchpriority="high"
+            height="1200"
+            width="2800"
           />
-        </div>
+        </picture>
+
         <!-- NOTE: As of Chrome 129, we can trick it by hiding the LCP element behind a transparent element -->
         <!-- <div class="overlay"></div> -->
         <div class="hero-content">
